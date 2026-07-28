@@ -6,10 +6,7 @@ orchestrated via Docker Compose.
 
 ## Table of Contents
 
-- [Description](#description)
 - [Quickstart](#quickstart)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
 - [Usage](#usage)
   - [1. Environment Variables](#1-environment-variables)
   - [2. Networking](#2-networking)
@@ -19,49 +16,8 @@ orchestrated via Docker Compose.
   - [6. Stopping the Stack](#6-stopping-the-stack)
 - [Testing](#testing)
 
-## Description
-
-This repository contains everything needed to run the Conduit application
-("RealWorld" example app — a Medium.com-style blogging platform) using
-Docker Compose. It consists of three services:
-
-- **`frontend`** – the Angular application, built via a multi-stage Docker
-  build and served as static files through `nginx`.
-- **`backend`** – the Django REST API, served via `gunicorn` (a production
-  WSGI server, not the Django development server).
-- **`db`** – a PostgreSQL database that stores all application data.
-
-All three services run in a shared Docker network (`conduit_network`), so
-the backend can reach the database by its service name (`db`), and the
-frontend can reach the backend through the network as well. Database
-content is persisted through a named Docker volume, so data survives
-container restarts and recreations.
-
-### Repository contents
-
-| Path                                  | Purpose                                                      |
-|---------------------------------------|-----------------------------------------------------------------|
-| `docker-compose.yaml`                 | Defines and configures the `frontend`, `backend`, and `db` services |
-| `example.env`                         | Template with default values for all environment variables       |
-| `.gitignore`                          | Excludes secrets and irrelevant files from git                     |
-| `.dockerignore`                       | Excludes irrelevant files (e.g. `node_modules`) from Docker builds  |
-| `backend/conduit-backend/Dockerfile`  | Builds the Django backend image                                    |
-| `frontend/conduit-frontend/Dockerfile`| Multi-stage build for the Angular frontend, served via nginx     |
-| `README.md`                           | This documentation                                                   |
 
 ## Quickstart
-
-### Prerequisites
-
-In order to run this project you need the following:
-
-- **Git** – to clone the repository
-- An **OCI-compliant container engine with Compose support** (e.g. Docker
-  Engine + Compose plugin)
-- A **host or VM with a public IP** and **port `8282` open** (frontend)
-- **Terminal/SSH access** to that host
-
-### Installation
 
 To get started, follow these steps:
 
