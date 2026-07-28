@@ -7,4 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "conduit.wsgi:application"]
+EXPOSE 8001
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "conduit.wsgi:application"]
