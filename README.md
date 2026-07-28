@@ -39,14 +39,14 @@ container restarts and recreations.
 
 ### Repository contents
 
-| Path                                | Purpose                                                      |
-|--------------------------------------|-----------------------------------------------------------------|
-| `docker-compose.yaml`                | Defines and configures the `frontend`, `backend`, and `db` services |
-| `example.env`                        | Template with default values for all environment variables       |
+| Path                                  | Purpose                                                      |
+|---------------------------------------|-----------------------------------------------------------------|
+| `docker-compose.yaml`                 | Defines and configures the `frontend`, `backend`, and `db` services |
+| `example.env`                         | Template with default values for all environment variables       |
 | `.gitignore`                          | Excludes secrets and irrelevant files from git                     |
 | `.dockerignore`                       | Excludes irrelevant files (e.g. `node_modules`) from Docker builds  |
-| `backend/conduit-backend/Dockerfile` | Builds the Django backend image                                    |
-| `frontend/conduit-frontend/Dockerfile` | Multi-stage build for the Angular frontend, served via nginx     |
+| `backend/conduit-backend/Dockerfile`  | Builds the Django backend image                                    |
+| `frontend/conduit-frontend/Dockerfile`| Multi-stage build for the Angular frontend, served via nginx     |
 | `README.md`                           | This documentation                                                   |
 
 ## Quickstart
@@ -108,16 +108,16 @@ All configuration is controlled through environment variables, defined in
 
 | Variable               | Required | Default (in `example.env`) | Description                                       |
 |--------------------------|----------|--------------------------------|-------------------------------------------------------|
-| `DJANGO_SECRET_KEY`    | Yes      | `change_me` — **change this**  | Django's cryptographic secret key                       |
-| `DJANGO_DEBUG`         | Yes      | `True`                          | Enables/disables Django debug mode                      |
-| `DJANGO_ALLOWED_HOSTS` | Yes      | `localhost,127.0.0.1`           | Comma-separated list of allowed hostnames                |
-| `BACKEND_PORT`         | Yes      | `8000`                          | Host port on which the Django admin/API is exposed        |
-| `DATABASE_HOST`        | Yes      | `db`                            | Hostname of the database service                          |
-| `DATABASE_PORT`        | Yes      | `5432`                          | Port of the database service                               |
-| `POSTGRES_DB`          | Yes      | `conduit`                       | Name of the PostgreSQL database                             |
-| `POSTGRES_USER`        | Yes      | `conduit`                       | Database user used internally by the backend                |
-| `POSTGRES_PASSWORD`    | Yes      | `change_me` — **change this**  | Password for the database user                              |
-| `FRONTEND_PORT`        | Yes      | `8282`                          | Host port on which the frontend is exposed                   |
+| `DJANGO_SECRET_KEY`    | Yes      | `change_me` — **change this**    | Django's cryptographic secret key                     |
+| `DJANGO_DEBUG`         | Yes      | `True`                           | Enables/disables Django debug mode                    |
+| `DJANGO_ALLOWED_HOSTS` | Yes      | `localhost,127.0.0.1`            | Comma-separated list of allowed hostnames             |
+| `BACKEND_PORT`         | Yes      | `8000`                           | Host port on which the Django admin/API is exposed    |
+| `DATABASE_HOST`        | Yes      | `db`                             | Hostname of the database service                      |
+| `DATABASE_PORT`        | Yes      | `5432`                           | Port of the database service                          |
+| `POSTGRES_DB`          | Yes      | `conduit`                        | Name of the PostgreSQL database                       |
+| `POSTGRES_USER`        | Yes      | `conduit`                        | Database user used internally by the backend          |
+| `POSTGRES_PASSWORD`    | Yes      | `change_me` — **change this**    | Password for the database user                        |
+| `FRONTEND_PORT`        | Yes      | `8282`                           | Host port on which the frontend is exposed            |
 
 > [!IMPORTANT]
 > `example.env` is committed to the repository and must only ever contain
