@@ -5,7 +5,8 @@ RUN npm ci
 COPY . .
 
 ARG API_URL=http://localhost:8000/api
-RUN sed -i "s#https://api.realworld.io/api#${API_URL}#g" src/app/core/interceptors/api.interceptor.ts
+RUN sed -i "s#https://api.realworld.io/api#${API_URL}#g" \
+    src/app/core/interceptors/api.interceptor.ts
 
 RUN npm run build
 

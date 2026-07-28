@@ -22,6 +22,7 @@ services:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DJANGO_DEBUG: ${DJANGO_DEBUG}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      FRONTEND_URL: ${FRONTEND_URL}
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_NAME: ${POSTGRES_DB}
@@ -35,7 +36,10 @@ services:
       - conduit_network
 
   frontend:
-    build: ./frontend/conduit-frontend
+    build:
+      context: ./frontend/conduit-frontend
+      args:
+        API_URL: ${API_URL}
     container_name: conduit_frontend
     restart: unless-stopped
     depends_on:
