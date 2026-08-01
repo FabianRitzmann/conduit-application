@@ -1,3 +1,0 @@
-[submodule "backend/conduit-backend"]
-	path = backend/conduit-backend
-	url = https://github.com/Developer-Akademie-DevSecOpsKurs/conduit-backend.git
