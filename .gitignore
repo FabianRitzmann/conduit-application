@@ -1,3 +1,9 @@
 .env
 db-logs.txt
 environment.prod.ts
+node_modules/
+__pycache__/
+*.pyc
+venv/
+staticfiles/
+dist/
