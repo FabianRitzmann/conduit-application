@@ -43,7 +43,7 @@ jobs:
         with:
           context: ./backend/conduit-backend
           push: true
-          tags: 
+          tags: |
             ghcr.io/fabianritzmann/conduit-backend:latest
             ghcr.io/fabianritzmann/conduit-backend:${{ github.sha }}
 
@@ -52,7 +52,7 @@ jobs:
         with:
           context: ./frontend/conduit-frontend
           push: true
-          tags: 
+          tags: |
             ghcr.io/fabianritzmann/conduit-frontend:latest
             ghcr.io/fabianritzmann/conduit-frontend:${{ github.sha }}
           build-args: |
