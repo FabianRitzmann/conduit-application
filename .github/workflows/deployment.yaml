@@ -63,6 +63,18 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy docker-compose.yaml to server
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          source: "docker-compose.yaml"
+          target: "/opt/conduit"
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
@@ -72,6 +84,6 @@ jobs:
           script_stop: true
           script: |
             cd /opt/conduit
-            docker compose -f docker-compose.yaml pull
-            docker compose -f docker-compose.yaml up -d
+            docker compose pull
+            docker compose up -d
             docker image prune -f
