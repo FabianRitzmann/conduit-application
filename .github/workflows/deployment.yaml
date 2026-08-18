@@ -43,14 +43,18 @@ jobs:
         with:
           context: ./backend/conduit-backend
           push: true
-          tags: ghcr.io/fabianritzmann/conduit-backend:latest
+          tags: 
+            ghcr.io/fabianritzmann/conduit-backend:latest
+            ghcr.io/fabianritzmann/conduit-backend:${{ github.sha }}
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./frontend/conduit-frontend
           push: true
-          tags: ghcr.io/fabianritzmann/conduit-frontend:latest
+          tags: 
+            ghcr.io/fabianritzmann/conduit-frontend:latest
+            ghcr.io/fabianritzmann/conduit-frontend:${{ github.sha }}
           build-args: |
             API_URL=${{ vars.API_URL }}
 
