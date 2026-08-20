@@ -56,7 +56,7 @@ jobs:
             ghcr.io/fabianritzmann/conduit-frontend:latest
             ghcr.io/fabianritzmann/conduit-frontend:${{ github.sha }}
           build-args: |
-            API_URL=${{ vars.API_URL }}
+            API_URL=${{ secrets.API_URL }}
 
   deploy:
     needs: build-and-push
